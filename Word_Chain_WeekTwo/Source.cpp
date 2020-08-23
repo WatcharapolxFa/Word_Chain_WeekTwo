@@ -1,98 +1,78 @@
-#include<stdio.h>
-
+﻿#include <stdio.h>
 int main()
-
 {
+	int num1, num2, count = 0, x;
 
-	int a, b, d, f, g = 0, h, x = 1;;
+	scanf_s("%d%d",&num1,&num2);
 
-	scanf("%d%d", &a, &b);
 
-	char c[a + 10], e[a + 10], fin[a + 10];
+	char str[num1][num2];//n คือจำนวนคำ l คือความยาวของแต่ละคำ
 
-	gets_s("%s", c);
+	int i, j;
 
-	for (d = 1; d < b; d++)
+	for (i = 0; i < num1; i++)
 
 	{
 
-		gets_s("%s", e);
-
-		for (f = 0; f < a; f++)
+		for (j = 0; j < num2; j++)
 
 		{
 
-			if (e[f] != c[f])
-
-			{
-
-				g++;
-
-			}
-
-		}
-
-		if (x == 0)
-
-		{
-
-			g = 0;
-
-		}
-
-		if (g > 2)
-
-		{
-
-			for (h = 0; h < a; h++)
-
-			{
-
-				fin[h] = c[h];
-
-			}
-
-			fin[a] = '\0';
-
-			x = 0;
-
-		}
-
-		else
-
-		{
-
-			for (h = 0; h < a; h++)
-
-			{
-
-				c[h] = e[h];
-
-			}
-
-			c[a] = '\0';
+			scanf_s(str[i][j]);
 
 		}
 
 	}
 
-	if (x == 1)
+	for (i = 0; i < num1; i++)
 
 	{
 
-		for (h = 0; h < a; h++)
+		for (j = 0; j < num2; j++)
 
 		{
 
-			fin[h] = c[h];
+			if (str[i][j] != str[i + 1][j])//เทียบระหว่างสองคำ
+
+			{
+
+				count++;//นับว่าตัวอักษรต่างกันกี่ตัวแล้ว
+
+				if (count > 2)
+
+				{
+
+					x = i;//เก็บว่าคำไหนที่เป็นตัวสุดท้าย
+
+					i = num1;//ไว้ออกจาก loop นอก
+
+					break;
+
+				}
+
+			}
+
+			else if (j == num2 - 2 && count == 0)//ถ้าตัวไหนเช็คจนเหลือ 2 ตัวสุดท้ายแล้วยังไม่มีตัวต่างให้ข้ามไปคำถัดไปเลย
+
+			{
+
+				break;
+
+			}
 
 		}
 
-		fin[a] = '\0';
+		count = 0;
 
 	}
 
-	printf("%s", fin);
+	for (i = 0; i < num1; i++)
+
+	{
+
+		printf_s("%c", str[x][i]);
+
+	}
 
 	return 0;
 
