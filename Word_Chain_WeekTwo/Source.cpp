@@ -1,38 +1,44 @@
-﻿#include <stdio.h>
+﻿#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <string.h>
+
+
 int main()
+
 {
-	int num1, num2, count = 0, x;
 
-	scanf_s("%d%d",&num1,&num2);
+	int l, n, count, x ,i,j;
 
+	scanf_s("%d %d", &l, &n);
 
-	char str[num1][num2];//n คือจำนวนคำ l คือความยาวของแต่ละคำ
+	char word[n][l];//n คือจำนวนคำ l คือความยาวของแต่ละคำ
 
-	int i, j;
+	
 
-	for (i = 0; i < num1; i++)
+	for (i = 0; i < n; i++)
 
 	{
 
-		for (j = 0; j < num2; j++)
+		for (j = 0; j < l; j++)
 
 		{
 
-			scanf_s(str[i][j]);
+			scanf_s("%c", &word[i][j]);
 
 		}
 
 	}
 
-	for (i = 0; i < num1; i++)
+	for (i = 0; i < n; i++)
 
 	{
 
-		for (j = 0; j < num2; j++)
+		for (j = 0; j < l; j++)
 
 		{
 
-			if (str[i][j] != str[i + 1][j])//เทียบระหว่างสองคำ
+			if (word[i][j] != word[i + 1][j])//เทียบระหว่างสองคำ
 
 			{
 
@@ -44,7 +50,7 @@ int main()
 
 					x = i;//เก็บว่าคำไหนที่เป็นตัวสุดท้าย
 
-					i = num1;//ไว้ออกจาก loop นอก
+					i = n;//ไว้ออกจาก loop นอก
 
 					break;
 
@@ -52,7 +58,7 @@ int main()
 
 			}
 
-			else if (j == num2 - 2 && count == 0)//ถ้าตัวไหนเช็คจนเหลือ 2 ตัวสุดท้ายแล้วยังไม่มีตัวต่างให้ข้ามไปคำถัดไปเลย
+			else if (j == l - 2 && count == 0)//ถ้าตัวไหนเช็คจนเหลือ 2 ตัวสุดท้ายแล้วยังไม่มีตัวต่างให้ข้ามไปคำถัดไปเลย
 
 			{
 
@@ -66,11 +72,11 @@ int main()
 
 	}
 
-	for (i = 0; i < num1; i++)
+	for (i = 0; i < l; i++)
 
 	{
 
-		printf_s("%c", str[x][i]);
+		printf("%c", word[x][i]);
 
 	}
 
