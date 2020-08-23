@@ -12,8 +12,8 @@ int main()
 
 	scanf_s("%d %d", &l, &n);
 
-	char word[n][l];//n คือจำนวนคำ l คือความยาวของแต่ละคำ
-
+	char word[n][l] = new char[n][l];//n คือจำนวนคำ l คือความยาวของแต่ละคำ
+	
 	
 
 	for (i = 0; i < n; i++)
