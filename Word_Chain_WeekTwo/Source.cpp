@@ -1,56 +1,56 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-#include <string.h>
-
-
+﻿#include <stdio.h>
 int main()
 
 {
+	struct word
+	{
+		int word_length, word_count, sum, count = 0;
+		int i, j;
+	}Word_Chain;
 
-	int l, n, count, x ,i,j;
 
-	scanf_s("%d %d", &l, &n);
 
-	char word[n][l] = new char[n][l];//n คือจำนวนคำ l คือความยาวของแต่ละคำ
-	
-	
+	scanf("%d %d", &Word_Chain.word_length, &Word_Chain.word_count);
 
-	for (i = 0; i < n; i++)
+	char word[Word_Chain.word_count][Word_Chain.word_length];
+
+
+
+	for (Word_Chain.i = 0; Word_Chain.i < Word_Chain.word_count; Word_Chain.i++)
 
 	{
 
-		for (j = 0; j < l; j++)
+		for (Word_Chain.j = 0; Word_Chain.j < Word_Chain.word_length; Word_Chain.j++)
 
 		{
 
-			scanf_s("%c", &word[i][j]);
+			scanf(" %c", &word[Word_Chain.i][Word_Chain.j]);
 
 		}
 
 	}
 
-	for (i = 0; i < n; i++)
+	for (Word_Chain.i = 0; Word_Chain.i < Word_Chain.word_count; Word_Chain.i++)
 
 	{
 
-		for (j = 0; j < l; j++)
+		for (Word_Chain.j = 0; Word_Chain.j < Word_Chain.word_length; Word_Chain.j++)
 
 		{
 
-			if (word[i][j] != word[i + 1][j])//เทียบระหว่างสองคำ
+			if (word[Word_Chain.i][Word_Chain.j] != word[Word_Chain.i + 1][Word_Chain.j])
 
 			{
 
-				count++;//นับว่าตัวอักษรต่างกันกี่ตัวแล้ว
+				Word_Chain.count++;
 
-				if (count > 2)
+				if (Word_Chain.count > 2)
 
 				{
 
-					x = i;//เก็บว่าคำไหนที่เป็นตัวสุดท้าย
+					Word_Chain.sum = Word_Chain.i;
 
-					i = n;//ไว้ออกจาก loop นอก
+					Word_Chain.i = Word_Chain.word_count;
 
 					break;
 
@@ -58,8 +58,7 @@ int main()
 
 			}
 
-			else if (j == l - 2 && count == 0)//ถ้าตัวไหนเช็คจนเหลือ 2 ตัวสุดท้ายแล้วยังไม่มีตัวต่างให้ข้ามไปคำถัดไปเลย
-
+			else if (Word_Chain.j == Word_Chain.word_length - 2 && Word_Chain.count == 0)
 			{
 
 				break;
@@ -68,15 +67,15 @@ int main()
 
 		}
 
-		count = 0;
+		Word_Chain.count = 0;
 
 	}
 
-	for (i = 0; i < l; i++)
+	for (Word_Chain.i = 0; Word_Chain.i < Word_Chain.word_length; Word_Chain.i++)
 
 	{
 
-		printf("%c", word[x][i]);
+		printf("%c", word[Word_Chain.sum][Word_Chain.i]);
 
 	}
 
